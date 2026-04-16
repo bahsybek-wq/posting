@@ -1,24 +1,23 @@
 /* --- ЦВЕТОВАЯ ПАЛИТРА BAHANDI --- */
 :root {
-  --main-green: #00a651; /* Тот самый зеленый */
-  --cart-red: #ff4d4d;   /* Красный цвет для корзины */
+  --main-green: #00a651;
+  --cart-red: #ff4d4d;
   --white: #ffffff;
 }
 
 body {
   margin: 0;
   font-family: 'Segoe UI', Roboto, sans-serif;
-  background-color: #fff;
+  background-color: #f9f9f9; /* Сделали фон чуть серым, чтобы белые карточки выделялись */
 }
 
-/* --- ЗЕЛЕНАЯ ШАПКА (ВМЕСТО БЕЛОЙ) --- */
+/* --- ЗЕЛЕНАЯ ШАПКА --- */
 .header {
-  background-color: var(--main-green) !important; /* Делаем шапку зеленой */
+  background-color: var(--main-green) !important;
   padding: 12px 0;
   position: sticky;
   top: 0;
   z-index: 1000;
-  border-bottom: none; /* Убираем серую полоску */
 }
 
 .header-container {
@@ -31,97 +30,80 @@ body {
   position: relative;
 }
 
-/* Кнопка Кіру (Зеленая подложка, белый текст) */
 .auth-btn {
-  background-color: rgba(255, 255, 255, 0.2); /* Полупрозрачный белый на зеленом фоне */
+  background-color: rgba(255, 255, 255, 0.2);
   border: 1px solid rgba(255, 255, 255, 0.4);
-  color: white !important; /* Текст белый */
+  color: white !important;
   padding: 8px 16px;
   border-radius: 12px;
   font-weight: 600;
   font-size: 14px;
-  cursor: pointer;
 }
 
-/* Логотип BAHANDI (Теперь БЕЛЫЙ цвет) */
 .logo-title {
   position: absolute;
   left: 50%;
   transform: translateX(-50%);
-  margin: 0;
-  font-size: 22px;
+  color: white !important;
   font-weight: 900;
-  color: white !important; /* Заменили зеленый на белый */
-  letter-spacing: 1px;
-  cursor: pointer;
+  font-size: 22px;
   text-transform: uppercase;
 }
 
-/* Корзина (КРАСНЫЙ цвет) */
 .cart-badge {
-  background-color: var(--cart-red) !important; /* Заменили серый на красный */
-  color: white !important; /* Текст в корзине белый */
+  background-color: var(--cart-red) !important;
+  color: white !important;
   padding: 8px 16px;
   border-radius: 12px;
   font-weight: 700;
-  font-size: 14px;
-  cursor: pointer;
 }
 
-/* --- КАТЕГОРИИ (ОСТАВЛЯЕМ БЕЛЫМИ ДЛЯ ЧИТАЕМОСТИ) --- */
+/* --- КАТЕГОРИИ --- */
 .categories-nav {
   display: flex;
   overflow-x: auto;
   padding: 15px;
-  gap: 12px;
+  gap: 10px;
   background: #fff;
   scrollbar-width: none;
-  border-bottom: 1px solid #f5f5f5;
+  border-bottom: 1px solid #eee;
 }
-
 .categories-nav::-webkit-scrollbar { display: none; }
 
 .category-btn {
-  background: #f5f5f7;
+  background: #f1f1f1;
   border: none;
-  padding: 10px 22px;
+  padding: 10px 20px;
   border-radius: 12px;
-  white-space: nowrap;
   font-weight: 600;
-  font-size: 15px;
-  color: #333;
+  white-space: nowrap;
 }
 
-/* --- СЕТКА ТОВАРОВ: 2 В РЯД (БЕЗ ИЗМЕНЕНИЙ) --- */
+/* --- СЕТКА ТОВАРОВ: РОВНО ПО 2 В РЯД --- */
 .post-list {
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 12px;
-  padding: 15px;
+  grid-template-columns: 1fr 1fr; /* Ровно две колонки */
+  gap: 10px; /* Отступ между карточками */
+  padding: 10px;
   max-width: 1200px;
   margin: 0 auto;
 }
 
-@media (min-width: 769px) {
-  .post-list {
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    gap: 25px;
-  }
-}
-
-/* --- КАРТОЧКА ТОВАРА --- */
+/* --- КАРТОЧКА ТОВАРА КАК НА ФОТО --- */
 .post-card {
   background: #fff;
-  border-radius: 20px;
-  padding: 12px;
-  border: 1px solid #f1f1f1;
+  border-radius: 20px; /* Сильное закругление как на скриншоте */
+  padding: 10px;
+  border: 1px solid #eee;
   display: flex;
   flex-direction: column;
+  justify-content: space-between;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.03);
 }
 
 .product-img {
   width: 100%;
-  height: 140px;
+  aspect-ratio: 1 / 1; /* Делает фото квадратным и ровным */
   object-fit: cover;
   border-radius: 15px;
 }
@@ -129,8 +111,10 @@ body {
 .product-info h3 {
   font-size: 14px;
   font-weight: 600;
-  margin: 10px 0 5px 0;
-  height: 34px;
+  margin: 8px 0;
+  color: #333;
+  line-height: 1.2;
+  height: 34px; /* Чтобы названия были в две строки максимум */
   overflow: hidden;
 }
 
@@ -138,24 +122,24 @@ body {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-top: auto;
+  margin-top: 5px;
 }
 
 .price {
-  font-weight: 700;
+  font-weight: 800;
   font-size: 16px;
-  color: #000;
+  color: #222;
 }
 
+/* Кнопка плюсик серая круглая */
 .add-btn-small {
-  width: 34px;
-  height: 34px;
-  background: #f5f5f7;
+  width: 32px;
+  height: 32px;
+  background: #f0f2f5;
   border: none;
-  border-radius: 10px;
-  font-size: 22px;
-  font-weight: bold;
-  color: var(--main-green);
+  border-radius: 8px;
+  font-size: 20px;
+  color: #000;
   display: flex;
   align-items: center;
   justify-content: center;
