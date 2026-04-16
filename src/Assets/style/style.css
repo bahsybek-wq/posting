@@ -1,17 +1,16 @@
-/* --- ЦВЕТОВАЯ ПАЛИТРА BAHANDI --- */
+/* --- ГЛОБАЛЬНЫЕ НАСТРОЙКИ --- */
 :root {
   --main-green: #00a651;
   --cart-red: #ff4d4d;
-  --white: #ffffff;
 }
 
 body {
   margin: 0;
   font-family: 'Segoe UI', Roboto, sans-serif;
-  background-color: #f9f9f9; /* Сделали фон чуть серым, чтобы белые карточки выделялись */
+  background-color: #f9f9f9;
 }
 
-/* --- ЗЕЛЕНАЯ ШАПКА --- */
+/* --- ШАПКА --- */
 .header {
   background-color: var(--main-green) !important;
   padding: 12px 0;
@@ -37,7 +36,6 @@ body {
   padding: 8px 16px;
   border-radius: 12px;
   font-weight: 600;
-  font-size: 14px;
 }
 
 .logo-title {
@@ -65,10 +63,8 @@ body {
   padding: 15px;
   gap: 10px;
   background: #fff;
-  scrollbar-width: none;
   border-bottom: 1px solid #eee;
 }
-.categories-nav::-webkit-scrollbar { display: none; }
 
 .category-btn {
   background: #f1f1f1;
@@ -79,69 +75,62 @@ body {
   white-space: nowrap;
 }
 
-/* --- СЕТКА ТОВАРОВ: РОВНО ПО 2 В РЯД --- */
+/* --- ПРИНУДИТЕЛЬНАЯ СЕТКА ПО 2 В РЯД --- */
 .post-list {
-  display: grid;
-  grid-template-columns: 1fr 1fr; /* Ровно две колонки */
-  gap: 10px; /* Отступ между карточками */
-  padding: 10px;
-  max-width: 1200px;
-  margin: 0 auto;
+  display: grid !important;
+  grid-template-columns: 1fr 1fr !important; /* Ровно две колонки */
+  gap: 10px !important;
+  padding: 10px !important;
+  width: 100% !important;
+  box-sizing: border-box !important;
 }
 
-/* --- КАРТОЧКА ТОВАРА КАК НА ФОТО --- */
+/* --- КАРТОЧКА ТОВАРА --- */
 .post-card {
   background: #fff;
-  border-radius: 20px; /* Сильное закругление как на скриншоте */
+  border-radius: 18px;
   padding: 10px;
   border: 1px solid #eee;
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
-  box-shadow: 0 2px 5px rgba(0,0,0,0.03);
+  box-sizing: border-box;
 }
 
 .product-img {
-  width: 100%;
-  aspect-ratio: 1 / 1; /* Делает фото квадратным и ровным */
+  width: 100% !important;
+  aspect-ratio: 1 / 1 !important; /* Квадратное фото */
   object-fit: cover;
-  border-radius: 15px;
+  border-radius: 14px;
 }
 
 .product-info h3 {
-  font-size: 14px;
+  font-size: 13px;
   font-weight: 600;
   margin: 8px 0;
-  color: #333;
-  line-height: 1.2;
-  height: 34px; /* Чтобы названия были в две строки максимум */
+  height: 32px;
   overflow: hidden;
+  line-height: 1.2;
 }
 
 .price-row {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-top: 5px;
+  margin-top: auto;
 }
 
 .price {
   font-weight: 800;
-  font-size: 16px;
-  color: #222;
+  font-size: 15px;
 }
 
-/* Кнопка плюсик серая круглая */
 .add-btn-small {
-  width: 32px;
-  height: 32px;
+  width: 30px;
+  height: 30px;
   background: #f0f2f5;
   border: none;
   border-radius: 8px;
-  font-size: 20px;
-  color: #000;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  cursor: pointer;
+  color: #00a651;
+  font-size: 18px;
+  font-weight: bold;
 }
