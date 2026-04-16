@@ -6,10 +6,10 @@
 body {
   margin: 0;
   font-family: 'Segoe UI', Roboto, sans-serif;
-  background-color: #fff;
+  background-color: #f8f8f8; /* Светлый фон, чтобы карточки выделялись */
 }
 
-/* --- ШАПКА --- */
+/* --- ШАПКА (ЗЕЛЕНАЯ) --- */
 .header {
   background-color: var(--main-green) !important;
   padding: 10px 0;
@@ -46,7 +46,6 @@ body {
 
 .cart-badge {
   background-color: var(--cart-red) !important;
-  border: none;
   color: white !important;
   padding: 6px 15px;
   border-radius: 20px;
@@ -72,48 +71,57 @@ body {
   border-radius: 10px;
   font-weight: 600;
   color: #333;
-  white-space: nowrap;
 }
 
-/* --- ТОВАРЫ (КАК НА СКРИНШОТЕ) --- */
+/* --- ТОВАРЫ (ПО 2 В РЯД, КАК НА ФОТО) --- */
 .post-list {
-  display: flex;
-  flex-direction: column;
-  gap: 20px;
-  padding: 15px;
+  display: grid !important;
+  grid-template-columns: 1fr 1fr !important; /* Ровно 2 колонки */
+  gap: 10px !important;
+  padding: 12px !important;
 }
 
 .post-card {
   background: #fff;
-  border-radius: 20px;
-  padding: 15px;
+  border-radius: 18px;
+  padding: 10px;
   border: 1px solid #eee;
-  box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+  display: flex;
+  flex-direction: column;
 }
 
+/* --- ФИКС КАРТИНКИ: НЕ ДЛИННАЯ --- */
 .product-img {
-  width: 100%;
-  border-radius: 15px;
-  object-fit: cover;
+  width: 100% !important;
+  height: 130px !important; /* Ограничиваем высоту, чтобы картинка была аккуратной */
+  object-fit: cover !important; /* Обрезает лишнее, сохраняя пропорции */
+  border-radius: 12px !important;
+}
+
+.product-info h3 {
+  font-size: 14px;
+  margin: 10px 0 5px 0;
+  height: 34px;
+  overflow: hidden;
 }
 
 .price-row {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-top: 15px;
+  margin-top: auto;
 }
 
 .price {
   font-weight: 700;
-  font-size: 18px;
+  font-size: 16px;
 }
 
 .add-btn-small {
   background: #f1f3f5;
   border: none;
-  width: 35px;
-  height: 35px;
+  width: 30px;
+  height: 30px;
   border-radius: 8px;
   color: var(--main-green);
   font-size: 20px;
