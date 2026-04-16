@@ -13,7 +13,7 @@ body {
 .header {
   background-color: var(--main-green);
   color: white;
-  padding: 15px 0;
+  padding: 10px 0;
   position: sticky;
   top: 0;
   z-index: 100;
@@ -29,6 +29,12 @@ body {
   padding: 0 20px;
 }
 
+/* --- КАТЕГОРИИ МЕНЮ --- */
+.nav-menu {
+  display: flex;
+  align-items: center;
+}
+
 .nav-menu button {
   background: none;
   border: none;
@@ -40,19 +46,16 @@ body {
   transition: opacity 0.2s;
 }
 
-.nav-menu button:hover {
-  opacity: 0.8;
-}
-
 .cart-badge {
   background: #ff4d4d;
   padding: 8px 18px;
   border-radius: 25px;
   font-weight: bold;
   cursor: pointer;
+  white-space: nowrap;
 }
 
-/* --- КОНТЕЙНЕР ЖӘНЕ СЕТКА --- */
+/* --- СЕТКА ТОВАРОВ --- */
 .container {
   max-width: 1200px;
   margin: 0 auto;
@@ -61,15 +64,12 @@ body {
 
 .post-list {
   display: grid;
-  /* Карточкаларды автоматты сыйдыру */
   grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
   gap: 30px;
-  justify-content: center;
   justify-items: center;
   padding: 20px 0;
 }
 
-/* --- КАРТОЧКА СТИЛІ --- */
 .post-card {
   background: white;
   border-radius: 20px;
@@ -78,14 +78,9 @@ body {
   padding: 15px;
   width: 100%;
   max-width: 300px;
-  transition: transform 0.3s ease;
   display: flex;
   flex-direction: column;
-  box-sizing: border-box; /* Размеры считаются правильно с padding */
-}
-
-.post-card:hover {
-  transform: translateY(-10px);
+  box-sizing: border-box;
 }
 
 .product-img {
@@ -93,20 +88,6 @@ body {
   height: 180px;
   object-fit: cover;
   border-radius: 15px;
-  margin-bottom: 15px;
-}
-
-.product-info h3 {
-  margin: 10px 0;
-  font-size: 18px;
-  color: var(--dark-grey);
-}
-
-.price {
-  font-size: 20px;
-  font-weight: bold;
-  color: var(--dark-grey);
-  margin-bottom: 15px;
 }
 
 .add-to-cart-btn {
@@ -116,113 +97,96 @@ body {
   padding: 12px;
   border-radius: 10px;
   cursor: pointer;
-  width: 100%;
-  font-weight: bold;
-  font-size: 15px;
-  transition: background 0.2s;
-}
-
-.add-to-cart-btn:hover {
-  background: #008f45;
-}
-
-/* --- ПІКІРЛЕР БӨЛІМІ --- */
-.comment-box {
-  margin-top: 20px;
-  border-top: 1px dashed #eee;
-  padding-top: 15px;
-}
-
-.comment-input-group {
-  display: flex;
-  gap: 8px;
-  margin-top: 10px;
-}
-
-.comment-input-group input {
-  flex: 1;
-  padding: 8px 12px;
-  border: 1px solid #e0e0e0;
-  border-radius: 8px;
-  outline: none;
-}
-
-.comment-input-group button {
-  background: #f0f0f0;
-  border: none;
-  padding: 0 15px;
-  border-radius: 8px;
-  cursor: pointer;
   font-weight: bold;
 }
 
-.single-comment {
-  font-size: 13px;
-  background: #f8f8f8;
-  padding: 8px;
-  margin: 5px 0;
-  border-radius: 6px;
-  color: #555;
-}
-
-/* --- АДАПТИВНАЯ ВЕРСТКА (ТЕЛЕФОНДАР ҮШІН) --- */
+/* --- ПРОФЕССИОНАЛЬНАЯ МОБИЛЬНАЯ ВЕРСИЯ --- */
 
 @media (max-width: 768px) {
+  /* Шапка становится компактнее */
   .header-container {
-    flex-direction: column; /* Элементтер бірінің астына бірі тұрады */
-    gap: 15px;
+    flex-direction: column;
     padding: 10px;
+    gap: 12px;
   }
 
+  /* Название бренда по центру */
+  .header h1 {
+    font-size: 20px;
+    margin: 5px 0;
+  }
+
+  /* ГЛАВНОЕ: Горизонтальный скролл для категорий (как в приложениях) */
   .nav-menu {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 5px;
+    width: 100vw;
+    overflow-x: auto; /* Позволяет листать категории влево-вправо */
+    padding: 5px 15px;
+    gap: 10px;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none; /* Прячем полоску скролла */
+  }
+
+  .nav-menu::-webkit-scrollbar {
+    display: none;
   }
 
   .nav-menu button {
-    margin: 5px;
+    margin: 0;
+    padding: 8px 16px;
+    background: rgba(255, 255, 255, 0.15); /* Делаем кнопки похожими на чипсы */
+    border-radius: 20px;
     font-size: 14px;
+    flex-shrink: 0; /* Чтобы кнопки не сжимались */
   }
 
+  /* Кнопка корзины */
+  .cart-badge {
+    width: auto;
+    font-size: 14px;
+    padding: 10px 20px;
+  }
+
+  /* Сетка товаров: 2 колонки (стандарт для еды) */
   .post-list {
-    /* Мобильді нұсқада карточкалардың енін сәл азайту */
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    gap: 15px;
-    padding: 10px;
-  }
-
-  .container {
+    grid-template-columns: repeat(2, 1fr); 
+    gap: 12px;
     padding: 10px;
   }
 
   .post-card {
-    max-width: 100%; /* Карточка экранның толық енін алады */
+    padding: 10px;
+    border-radius: 15px;
   }
 
   .product-img {
-    height: 200px;
+    height: 130px; /* Картинки поменьше, чтобы влезало по 2 в ряд */
   }
 
-  .cart-badge {
-    width: 90%;
-    text-align: center;
-    padding: 12px;
-  }
-}
-
-@media (max-width: 480px) {
-  .nav-menu button {
-    font-size: 12px;
-    margin: 2px;
-  }
-  
   .product-info h3 {
-    font-size: 16px;
+    font-size: 14px;
+    margin: 5px 0;
+    line-height: 1.2;
   }
 
   .price {
-    font-size: 18px;
+    font-size: 16px;
+    margin-bottom: 10px;
+  }
+
+  .add-to-cart-btn {
+    padding: 8px;
+    font-size: 12px;
+  }
+
+  /* Уменьшаем отступы секции комментариев */
+  .comment-box {
+    display: none; /* На мобилках комментарии часто прячут внутрь карточки */
+  }
+}
+
+/* Совсем маленькие телефоны */
+@media (max-width: 380px) {
+  .post-list {
+    grid-template-columns: 1fr; /* Если экран супер маленький, возвращаем 1 колонку */
   }
 }
