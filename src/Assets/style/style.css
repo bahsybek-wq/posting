@@ -1,18 +1,18 @@
-/* --- ГЛОБАЛЬНЫЕ НАСТРОЙКИ --- */
+/* --- ПЕРЕМЕННЫЕ --- */
 :root {
-  --main-green: #00a651;
-  --cart-red: #ff4d4d;
+  --main-green: #00a651; /* Тот самый зеленый */
+  --cart-red: #ff4d4d;   /* Красный для корзины */
 }
 
 body {
   margin: 0;
   font-family: 'Segoe UI', Roboto, sans-serif;
-  background-color: #f9f9f9;
+  background-color: #fff;
 }
 
-/* --- ШАПКА --- */
+/* --- ЗЕЛЕНАЯ ШАПКА --- */
 .header {
-  background-color: var(--main-green) !important;
+  background-color: var(--main-green) !important; /* Делаем шапку зеленой */
   padding: 12px 0;
   position: sticky;
   top: 0;
@@ -29,108 +29,107 @@ body {
   position: relative;
 }
 
+/* Кнопка Кіру (Зеленый квадрат, белый текст) */
 .auth-btn {
-  background-color: rgba(255, 255, 255, 0.2);
+  background-color: rgba(255, 255, 255, 0.2); /* Светлая подложка на зеленом */
   border: 1px solid rgba(255, 255, 255, 0.4);
-  color: white !important;
+  color: white !important; /* Текст белый */
   padding: 8px 16px;
   border-radius: 12px;
   font-weight: 600;
+  font-size: 14px;
+  cursor: pointer;
 }
 
+/* Логотип BAHANDI (Белый цвет) */
 .logo-title {
   position: absolute;
   left: 50%;
   transform: translateX(-50%);
-  color: white !important;
-  font-weight: 900;
+  margin: 0;
   font-size: 22px;
+  font-weight: 900;
+  color: white !important; /* Сделали белым */
+  letter-spacing: 1px;
   text-transform: uppercase;
 }
 
+/* Корзина (Красный цвет) */
 .cart-badge {
-  background-color: var(--cart-red) !important;
-  color: white !important;
+  background-color: var(--cart-red) !important; /* Сделали красным */
+  color: white !important; /* Текст белый */
   padding: 8px 16px;
   border-radius: 12px;
   font-weight: 700;
+  font-size: 14px;
+  cursor: pointer;
 }
 
-/* --- КАТЕГОРИИ --- */
+/* --- КАТЕГОРИИ (НИЖЕ ШАПКИ) --- */
 .categories-nav {
   display: flex;
   overflow-x: auto;
   padding: 15px;
-  gap: 10px;
+  gap: 12px;
   background: #fff;
-  border-bottom: 1px solid #eee;
+  scrollbar-width: none;
+  border-bottom: 1px solid #f5f5f5;
 }
+
+.categories-nav::-webkit-scrollbar { display: none; }
 
 .category-btn {
-  background: #f1f1f1;
+  background: #f5f5f7;
   border: none;
-  padding: 10px 20px;
+  padding: 10px 22px;
   border-radius: 12px;
-  font-weight: 600;
   white-space: nowrap;
+  font-weight: 600;
+  color: #333;
 }
 
-/* --- ПРИНУДИТЕЛЬНАЯ СЕТКА ПО 2 В РЯД --- */
+.category-btn.active {
+  background: var(--main-green);
+  color: white;
+}
+
+/* --- СЕТКА ТОВАРОВ (2 В РЯД) --- */
 .post-list {
-  display: grid !important;
-  grid-template-columns: 1fr 1fr !important; /* Ровно две колонки */
-  gap: 10px !important;
-  padding: 10px !important;
-  width: 100% !important;
-  box-sizing: border-box !important;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 12px;
+  padding: 15px;
 }
 
-/* --- КАРТОЧКА ТОВАРА --- */
 .post-card {
   background: #fff;
-  border-radius: 18px;
-  padding: 10px;
-  border: 1px solid #eee;
+  border-radius: 20px;
+  padding: 12px;
+  border: 1px solid #f1f1f1;
   display: flex;
   flex-direction: column;
-  box-sizing: border-box;
 }
 
 .product-img {
-  width: 100% !important;
-  aspect-ratio: 1 / 1 !important; /* Квадратное фото */
+  width: 100%;
+  height: 140px;
   object-fit: cover;
-  border-radius: 14px;
-}
-
-.product-info h3 {
-  font-size: 13px;
-  font-weight: 600;
-  margin: 8px 0;
-  height: 32px;
-  overflow: hidden;
-  line-height: 1.2;
+  border-radius: 15px;
 }
 
 .price-row {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-top: auto;
-}
-
-.price {
-  font-weight: 800;
-  font-size: 15px;
+  margin-top: 10px;
 }
 
 .add-btn-small {
-  width: 30px;
-  height: 30px;
-  background: #f0f2f5;
+  width: 34px;
+  height: 34px;
+  background: #f5f5f7;
   border: none;
-  border-radius: 8px;
-  color: #00a651;
-  font-size: 18px;
-  font-weight: bold;
+  border-radius: 10px;
+  font-size: 22px;
+  color: var(--main-green);
 }
