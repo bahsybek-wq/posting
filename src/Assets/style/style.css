@@ -55,29 +55,32 @@ body {
   gap: 5px;
 }
 
-/* --- КАТЕГОРИИ ПО ЦЕНТРУ --- */
+/* --- КАТЕГОРИИ (ИСПРАВЛЕННАЯ ЦЕНТРОВКА) --- */
 .categories-nav {
   display: flex;
-  justify-content: center; /* Центрируем кнопки */
-  padding: 12px 15px;
+  justify-content: center; /* Центрирует кнопки по горизонтали */
+  padding: 12px 0; /* Убрали боковые отступы, чтобы центровка была точной */
   gap: 10px;
   background: #fff;
-  overflow-x: auto;
-  scrollbar-width: none;
-}
-
-.categories-nav::-webkit-scrollbar {
-  display: none;
+  border-bottom: 1px solid #f1f1f1;
+  width: 100%;
 }
 
 .category-btn {
   background: #f1f3f5;
   border: none;
   padding: 8px 18px;
-  border-radius: 10px;
+  border-radius: 12px;
   font-weight: 600;
   color: #333;
   white-space: nowrap;
+  flex-shrink: 0; /* Не дает кнопкам сжиматься */
+}
+
+/* Эффект при нажатии на категорию */
+.category-btn.active {
+  background: var(--main-green);
+  color: white;
 }
 
 /* --- СЕТКА ТОВАРОВ (2 В РЯД) --- */
@@ -86,6 +89,7 @@ body {
   grid-template-columns: 1fr 1fr !important;
   gap: 10px !important;
   padding: 12px !important;
+  max-width: 100%;
 }
 
 .post-card {
@@ -97,19 +101,20 @@ body {
   flex-direction: column;
 }
 
-/* КАРТИНКИ (КАК НА ФОТО) */
+/* КАРТИНКИ (НЕ ДЛИННЫЕ) */
 .product-img {
   width: 100% !important;
-  height: 130px !important; /* Не длинные */
+  height: 130px !important; 
   object-fit: cover !important;
   border-radius: 12px !important;
 }
 
 .product-info h3 {
-  font-size: 14px;
+  font-size: 13px; /* Чуть меньше для 2-х колонок */
   margin: 10px 0 5px 0;
-  height: 34px;
+  height: 32px;
   overflow: hidden;
+  line-height: 1.2;
 }
 
 .price-row {
@@ -121,14 +126,14 @@ body {
 
 .price {
   font-weight: 700;
-  font-size: 16px;
+  font-size: 15px;
 }
 
 .add-btn-small {
   background: #f1f3f5;
   border: none;
-  width: 30px;
-  height: 30px;
+  width: 32px;
+  height: 32px;
   border-radius: 8px;
   color: var(--main-green);
   font-size: 20px;
