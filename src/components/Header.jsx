@@ -12,13 +12,18 @@ const Header = ({ cartCount, setCategory, activeCategory, onCartClick, onAuthCli
         {/* Логотип строго по центру */}
         <h1 className="logo-title" onClick={() => setCategory('Барлығы')}>BAHANDI</h1>
         
-        {/* Корзина справа */}
-        <div className="cart-badge" onClick={onCartClick}>
-          🛒 {cartCount}
-        </div>
+        {/* Корзина справа (красная) */}
+        <button className="cart-badge" onClick={onCartClick}>
+          <img 
+            src="https://cdn-icons-png.flaticon.com/512/1170/1170678.png" 
+            alt="cart" 
+            style={{ width: '18px', filter: 'invert(1)' }} 
+          />
+          <span>{cartCount}</span>
+        </button>
       </div>
 
-      {/* Меню категорий как на скриншоте */}
+      {/* Меню категорий */}
       <nav className="categories-nav">
         <button 
           className={`category-btn ${activeCategory === 'Комбо' ? 'active' : ''}`} 
