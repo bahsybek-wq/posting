@@ -6,10 +6,10 @@
 body {
   margin: 0;
   font-family: 'Segoe UI', Roboto, sans-serif;
-  background-color: #f8f8f8; /* Светлый фон, чтобы карточки выделялись */
+  background-color: #f8f8f8;
 }
 
-/* --- ШАПКА (ЗЕЛЕНАЯ) --- */
+/* --- ШАПКА --- */
 .header {
   background-color: var(--main-green) !important;
   padding: 10px 0;
@@ -55,13 +55,19 @@ body {
   gap: 5px;
 }
 
-/* --- КАТЕГОРИИ --- */
+/* --- КАТЕГОРИИ ПО ЦЕНТРУ --- */
 .categories-nav {
   display: flex;
-  overflow-x: auto;
+  justify-content: center; /* Центрируем кнопки */
   padding: 12px 15px;
   gap: 10px;
   background: #fff;
+  overflow-x: auto;
+  scrollbar-width: none;
+}
+
+.categories-nav::-webkit-scrollbar {
+  display: none;
 }
 
 .category-btn {
@@ -71,12 +77,13 @@ body {
   border-radius: 10px;
   font-weight: 600;
   color: #333;
+  white-space: nowrap;
 }
 
-/* --- ТОВАРЫ (ПО 2 В РЯД, КАК НА ФОТО) --- */
+/* --- СЕТКА ТОВАРОВ (2 В РЯД) --- */
 .post-list {
   display: grid !important;
-  grid-template-columns: 1fr 1fr !important; /* Ровно 2 колонки */
+  grid-template-columns: 1fr 1fr !important;
   gap: 10px !important;
   padding: 12px !important;
 }
@@ -90,11 +97,11 @@ body {
   flex-direction: column;
 }
 
-/* --- ФИКС КАРТИНКИ: НЕ ДЛИННАЯ --- */
+/* КАРТИНКИ (КАК НА ФОТО) */
 .product-img {
   width: 100% !important;
-  height: 130px !important; /* Ограничиваем высоту, чтобы картинка была аккуратной */
-  object-fit: cover !important; /* Обрезает лишнее, сохраняя пропорции */
+  height: 130px !important; /* Не длинные */
+  object-fit: cover !important;
   border-radius: 12px !important;
 }
 
