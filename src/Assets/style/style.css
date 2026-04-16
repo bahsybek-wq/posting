@@ -1,192 +1,137 @@
 :root {
   --main-green: #00a651;
   --dark-grey: #333;
+  --light-bg: #f5f5f7;
 }
 
 body {
   margin: 0;
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  background-color: #f9f9f9;
+  font-family: 'Segoe UI', Roboto, sans-serif;
+  background-color: #fff;
 }
 
-/* --- ШАПКА (HEADER) --- */
+/* --- ОБНОВЛЕННАЯ ШАПКА --- */
 .header {
-  background-color: var(--main-green);
-  color: white;
+  background-color: #fff;
+  color: var(--dark-grey);
   padding: 10px 0;
   position: sticky;
   top: 0;
-  z-index: 100;
-  box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+  z-index: 1000;
+  border-bottom: 1px solid #eee;
 }
 
 .header-container {
   max-width: 1200px;
   margin: 0 auto;
   display: flex;
-  justify-content: space-between;
+  justify-content: space-between; /* Раскидывает элементы по краям */
   align-items: center;
-  padding: 0 20px;
+  padding: 0 15px;
+  position: relative; /* Для центровки логотипа */
 }
 
-/* --- КАТЕГОРИИ МЕНЮ --- */
-.nav-menu {
-  display: flex;
-  align-items: center;
-}
-
-.nav-menu button {
-  background: none;
+/* Кнопка входа слева */
+.auth-btn {
+  background: #f0f0f0;
   border: none;
-  color: white;
-  margin: 0 10px;
-  cursor: pointer;
-  font-size: 16px;
+  padding: 8px 12px;
+  border-radius: 10px;
   font-weight: 600;
-  transition: opacity 0.2s;
-}
-
-.cart-badge {
-  background: #ff4d4d;
-  padding: 8px 18px;
-  border-radius: 25px;
-  font-weight: bold;
+  font-size: 13px;
   cursor: pointer;
+}
+
+/* Логотип по центру */
+.logo-title {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  margin: 0;
+  font-size: 20px;
+  font-weight: 900;
+  color: var(--main-green);
+  letter-spacing: 1px;
+}
+
+/* Корзина справа */
+.cart-badge {
+  background: #f0f0f0;
+  color: var(--dark-grey);
+  padding: 8px 12px;
+  border-radius: 10px;
+  font-weight: bold;
+  font-size: 13px;
+  cursor: pointer;
+}
+
+/* --- КАТЕГОРИИ ПОД ШАПКОЙ --- */
+.categories-nav {
+  display: flex;
+  overflow-x: auto;
+  padding: 15px;
+  gap: 10px;
+  background: #fff;
+  scrollbar-width: none;
+}
+
+.categories-nav::-webkit-scrollbar { display: none; }
+
+.category-btn {
+  background: #f5f5f5;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 12px;
   white-space: nowrap;
+  font-weight: 600;
+  font-size: 14px;
+  color: var(--dark-grey);
 }
 
-/* --- СЕТКА ТОВАРОВ --- */
-.container {
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 20px;
-}
-
+/* --- СЕТКА ТОВАРОВ (2 В РЯД) --- */
 .post-list {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-  gap: 30px;
-  justify-items: center;
-  padding: 20px 0;
+  grid-template-columns: repeat(2, 1fr); /* Всегда 2 колонки на мобильном */
+  gap: 12px;
+  padding: 15px;
+}
+
+@media (min-width: 769px) {
+  .post-list {
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  }
 }
 
 .post-card {
-  background: white;
-  border-radius: 20px;
-  overflow: hidden;
-  box-shadow: 0 10px 20px rgba(0,0,0,0.05);
-  padding: 15px;
-  width: 100%;
-  max-width: 300px;
+  background: #fff;
+  border-radius: 18px;
+  padding: 10px;
+  border: 1px solid #f0f0f0;
   display: flex;
   flex-direction: column;
-  box-sizing: border-box;
 }
 
 .product-img {
   width: 100%;
-  height: 180px;
+  height: 140px;
   object-fit: cover;
-  border-radius: 15px;
+  border-radius: 14px;
 }
 
-.add-to-cart-btn {
-  background: var(--main-green);
-  color: white;
+.price-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 10px;
+}
+
+.add-btn-small {
+  width: 35px;
+  height: 35px;
+  background: #f0f0f0;
   border: none;
-  padding: 12px;
   border-radius: 10px;
-  cursor: pointer;
+  font-size: 20px;
   font-weight: bold;
-}
-
-/* --- ПРОФЕССИОНАЛЬНАЯ МОБИЛЬНАЯ ВЕРСИЯ --- */
-
-@media (max-width: 768px) {
-  /* Шапка становится компактнее */
-  .header-container {
-    flex-direction: column;
-    padding: 10px;
-    gap: 12px;
-  }
-
-  /* Название бренда по центру */
-  .header h1 {
-    font-size: 20px;
-    margin: 5px 0;
-  }
-
-  /* ГЛАВНОЕ: Горизонтальный скролл для категорий (как в приложениях) */
-  .nav-menu {
-    width: 100vw;
-    overflow-x: auto; /* Позволяет листать категории влево-вправо */
-    padding: 5px 15px;
-    gap: 10px;
-    -webkit-overflow-scrolling: touch;
-    scrollbar-width: none; /* Прячем полоску скролла */
-  }
-
-  .nav-menu::-webkit-scrollbar {
-    display: none;
-  }
-
-  .nav-menu button {
-    margin: 0;
-    padding: 8px 16px;
-    background: rgba(255, 255, 255, 0.15); /* Делаем кнопки похожими на чипсы */
-    border-radius: 20px;
-    font-size: 14px;
-    flex-shrink: 0; /* Чтобы кнопки не сжимались */
-  }
-
-  /* Кнопка корзины */
-  .cart-badge {
-    width: auto;
-    font-size: 14px;
-    padding: 10px 20px;
-  }
-
-  /* Сетка товаров: 2 колонки (стандарт для еды) */
-  .post-list {
-    grid-template-columns: repeat(2, 1fr); 
-    gap: 12px;
-    padding: 10px;
-  }
-
-  .post-card {
-    padding: 10px;
-    border-radius: 15px;
-  }
-
-  .product-img {
-    height: 130px; /* Картинки поменьше, чтобы влезало по 2 в ряд */
-  }
-
-  .product-info h3 {
-    font-size: 14px;
-    margin: 5px 0;
-    line-height: 1.2;
-  }
-
-  .price {
-    font-size: 16px;
-    margin-bottom: 10px;
-  }
-
-  .add-to-cart-btn {
-    padding: 8px;
-    font-size: 12px;
-  }
-
-  /* Уменьшаем отступы секции комментариев */
-  .comment-box {
-    display: none; /* На мобилках комментарии часто прячут внутрь карточки */
-  }
-}
-
-/* Совсем маленькие телефоны */
-@media (max-width: 380px) {
-  .post-list {
-    grid-template-columns: 1fr; /* Если экран супер маленький, возвращаем 1 колонку */
-  }
+  cursor: pointer;
 }
