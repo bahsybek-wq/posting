@@ -6,20 +6,26 @@ const Header = ({ cartCount, setCategory, activeCategory, onCartClick, onAuthCli
       <div className="header-container">
         {/* Кнопка входа слева */}
         <button className="auth-btn" onClick={onAuthClick}>
-          {currentUser ? '👤 Профиль' : 'Кіру'}
+          {currentUser ? 'Профиль' : 'Кіру'}
         </button>
         
-        {/* Логотип строго по центру (за счет CSS) */}
+        {/* Логотип строго по центру */}
         <h1 className="logo-title" onClick={() => setCategory('Барлығы')}>BAHANDI</h1>
         
         {/* Корзина справа */}
         <div className="cart-badge" onClick={onCartClick}>
-          🛒 <span>{cartCount}</span>
+          🛒 {cartCount}
         </div>
       </div>
 
-      {/* Полоса категорий снизу */}
+      {/* Меню категорий как на скриншоте */}
       <nav className="categories-nav">
+        <button 
+          className={`category-btn ${activeCategory === 'Комбо' ? 'active' : ''}`} 
+          onClick={() => setCategory('Комбо')}
+        >
+          Комбо
+        </button>
         <button 
           className={`category-btn ${activeCategory === 'Бургеры' ? 'active' : ''}`} 
           onClick={() => setCategory('Бургеры')}
@@ -31,12 +37,6 @@ const Header = ({ cartCount, setCategory, activeCategory, onCartClick, onAuthCli
           onClick={() => setCategory('Напитки')}
         >
           Сусындар
-        </button>
-        <button 
-          className={`category-btn ${activeCategory === 'Комбо' ? 'active' : ''}`} 
-          onClick={() => setCategory('Комбо')}
-        >
-          Комбо
         </button>
       </nav>
     </header>
