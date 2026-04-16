@@ -15,8 +15,7 @@
   },
   "scripts": {
     "start": "react-scripts start",
-    "dev": "vite",
-    "build": "..."
+    "build": "react-scripts build"
   },
   "eslintConfig": {
     "extends": [

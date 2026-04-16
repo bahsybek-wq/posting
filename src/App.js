@@ -1,10 +1,10 @@
 import React, { useState, useEffect } from 'react'; // useEffect қосылды
-import Header from './componets/Header';
-import PostList from './componets/PostList';
-import Footer from './componets/Footer';
-import CartModal from './componets/CartModal'; 
-import ProductModal from './componets/ProductModal';
-import AuthModal from './componets/AuthModal'; 
+import Header from './components/Header';
+import PostList from './components/PostList';
+import Footer from './components/Footer';
+import CartModal from './components/CartModal'; 
+import ProductModal from './components/ProductModal';
+import AuthModal from './components/AuthModal'; 
 import './Assets/style/style.css'; 
 
 function App() {
